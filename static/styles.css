@@ -150,7 +150,8 @@ h1 {
 .contact-list,
 .mini-list,
 .tag-list,
-.skill-pills {
+.skill-pills,
+.detail-list {
   display: flex;
   flex-wrap: wrap;
   gap: 0.75rem;
@@ -196,6 +197,10 @@ h1 {
 .hero-side h2 {
   font-size: 1.15rem;
   margin-bottom: 0.9rem;
+}
+
+.hero-actions {
+  margin-top: 1.5rem;
 }
 
 .contact-chip {
@@ -252,6 +257,16 @@ h1 {
   color: var(--muted);
 }
 
+.detail-list {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.detail-list li {
+  margin-left: 1.1rem;
+  color: var(--muted);
+}
+
 .stat-line {
   margin-top: 1rem;
   font-weight: 600;
@@ -271,6 +286,15 @@ h1 {
 .skill-card h3 {
   font-size: 1.2rem;
   margin-bottom: 1rem;
+}
+
+.skill-card p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.insight-card {
+  min-height: 100%;
 }
 
 .skill-pills li {
@@ -337,6 +361,41 @@ h1 {
   font-size: 0.92rem;
 }
 
+.narrative-panel {
+  max-width: 52rem;
+}
+
+.experience-grid {
+  align-items: start;
+}
+
+.experience-card {
+  min-height: 100%;
+}
+
+.experience-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: start;
+  margin-bottom: 1rem;
+}
+
+.certification-empty {
+  max-width: 48rem;
+}
+
+.text-link {
+  display: inline-flex;
+  margin-top: 1rem;
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.footer-kicker {
+  color: rgba(255, 248, 242, 0.72);
+}
+
 .footer {
   padding: 3rem 0 4rem;
 }
@@ -375,6 +434,7 @@ h1 {
   }
 
   .timeline-top,
+  .experience-top,
   .section-heading,
   .nav {
     flex-direction: column;

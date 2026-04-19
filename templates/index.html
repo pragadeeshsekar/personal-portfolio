@@ -5,20 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta
     name="description"
-    content="Pragadeesh Sekar - Test Automation and DevOps portfolio featuring experience, skills, education, and professional highlights."
+    content="{{ profile.name }} - {{ profile.headline }} portfolio focused on automation systems, delivery reliability, and engineering impact."
   >
-  <title>Pragadeesh Sekar | Test Automation &amp; DevOps</title>
+  <title>{{ profile.name }} | {{ profile.headline }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
   <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="#top">Pragadeesh Sekar</a>
+      <a class="brand" href="#top">{{ profile.name }}</a>
       <nav class="nav-links" aria-label="Section navigation">
         <a href="#about">About</a>
-        <a href="#skills">Skills</a>
+        <a href="#impact">Impact</a>
         <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
+        <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
       </nav>
     </div>
@@ -28,47 +28,40 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <article class="hero-main">
-          <div class="eyebrow">Last updated from resume on 12 March 2025</div>
-          <h1>Test Automation<br>&amp; DevOps</h1>
-          <p class="subtitle">
-            Pragadeesh Sekar builds reliable test automation, CI/CD workflows, and deployment systems across desktop apps,
-            media platforms, cloud infrastructure, and Kubernetes-based environments.
-          </p>
+          <h1>{{ profile.name }}</h1>
+          <p class="subtitle">{{ profile.headline }}. {{ profile.summary }}</p>
           <ul class="mini-list" aria-label="Focus areas">
-            <li>Pytest Automation</li>
-            <li>CI/CD Pipelines</li>
-            <li>Kubernetes</li>
-            <li>Jenkins</li>
-            <li>Ansible</li>
-            <li>Cloud Infrastructure</li>
+            {% for item in focus_areas %}
+            <li>{{ item }}</li>
+            {% endfor %}
           </ul>
-          <div class="hero-actions" style="margin-top: 1.5rem;">
-            <a class="button" href="#experience">View Experience</a>
-            <a class="button secondary" href="mailto:praga63@gmail.com">Email Me</a>
+          <div class="hero-actions">
+            <a class="button" href="#impact">See Impact</a>
+            <a class="button secondary" href="{{ profile.linkedin_url }}" target="_blank" rel="noreferrer">LinkedIn</a>
           </div>
         </article>
 
         <aside class="hero-side">
           <div>
-            <div class="section-kicker">Contact</div>
-            <h2>Open to conversations around automation, tooling, and delivery excellence.</h2>
+            <div class="section-kicker">Profile</div>
+            <h2>{{ profile.contact_intro }}</h2>
           </div>
           <div class="contact-list">
-            <a class="contact-chip" href="mailto:praga63@gmail.com">
+            <a class="contact-chip" href="mailto:{{ profile.email }}">
               <span>Email</span>
-              <span>praga63@gmail.com</span>
+              <span>{{ profile.email }}</span>
             </a>
-            <a class="contact-chip" href="tel:+919585928091">
+            <a class="contact-chip" href="tel:{{ profile.phone | replace(' ', '') }}">
               <span>Phone</span>
-              <span>+91 95859 28091</span>
+              <span>{{ profile.phone }}</span>
             </a>
-            <a class="contact-chip" href="https://github.com/pragadeeshsekar" target="_blank" rel="noreferrer">
+            <a class="contact-chip" href="{{ profile.github_url }}" target="_blank" rel="noreferrer">
               <span>GitHub</span>
-              <span>@pragadeeshsekar</span>
+              <span>{{ profile.github_label }}</span>
             </a>
-            <a class="contact-chip" href="https://www.linkedin.com/in/pragadeeshsekar/" target="_blank" rel="noreferrer">
+            <a class="contact-chip" href="{{ profile.linkedin_url }}" target="_blank" rel="noreferrer">
               <span>LinkedIn</span>
-              <span>/in/pragadeeshsekar</span>
+              <span>{{ profile.linkedin_label }}</span>
             </a>
           </div>
         </aside>
@@ -80,87 +73,39 @@
         <div class="section-heading">
           <div>
             <div class="section-kicker">About</div>
-            <h2>Shipping dependable systems through automation.</h2>
+            <h2>Engineering Focus</h2>
           </div>
-          <p>
-            With experience spanning Logitech, MediaKind, Cisco, Viasat, Nokia/Velocix, and HCL Technologies,
-            Pragadeesh has worked across test strategy, pipeline engineering, infrastructure automation, and release quality.
-          </p>
         </div>
         <div class="grid-2">
+          {% for insight in insights %}
           <article class="panel">
-            <h3>What I work on</h3>
-            <ul class="tag-list">
-              <li>Desktop application automation</li>
-              <li>Regression and release validation</li>
-              <li>System integration testing</li>
-              <li>Terraform-based infrastructure setup</li>
-              <li>Jenkins and ArgoCD workflows</li>
-              <li>Cross-team automation enablement</li>
+            <h3>{{ insight["title"] }}</h3>
+            <ul class="detail-list">
+              {% for item in insight["items"] %}
+              <li>{{ item }}</li>
+              {% endfor %}
             </ul>
           </article>
-          <article class="panel">
-            <h3>Professional snapshot</h3>
-            <p>
-              Current role: Lead Software Test Engineer - Automation at Logitech, focused on Pytest-driven desktop automation,
-              maintainable test design, and Jenkins-based suite execution.
-            </p>
-            <p class="stat-line">14+ years across software quality, automation, and delivery platforms.</p>
-          </article>
+          {% endfor %}
         </div>
       </div>
     </section>
 
-    <section class="section" id="skills">
+    <section class="section" id="impact">
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <div class="section-kicker">Skills</div>
-            <h2>Tools and platforms I use.</h2>
+            <div class="section-kicker">Impact</div>
+            <h2>Impact Areas</h2>
           </div>
-          <p>Organized from the resume into the main capability areas that power daily engineering and release workflows.</p>
         </div>
         <div class="skill-grid">
-          <article class="skill-card">
-            <h3>Programming</h3>
-            <ul class="skill-pills">
-              <li>Python</li>
-              <li>Shell</li>
-              <li>JavaScript</li>
-              <li>C++</li>
-              <li>Ansible</li>
-              <li>TCL</li>
-              <li>Groovy DSL</li>
-              <li>Go</li>
-            </ul>
+          {% for item in impact_areas %}
+          <article class="skill-card insight-card">
+            <h3>{{ item["title"] }}</h3>
+            <p>{{ item["description"] }}</p>
           </article>
-          <article class="skill-card">
-            <h3>DevOps &amp; Delivery</h3>
-            <ul class="skill-pills">
-              <li>Docker</li>
-              <li>Kubernetes</li>
-              <li>Jenkins</li>
-              <li>Git</li>
-              <li>ArgoCD</li>
-              <li>Helm</li>
-              <li>Azure DevOps</li>
-              <li>Jira</li>
-            </ul>
-          </article>
-          <article class="skill-card">
-            <h3>Testing &amp; Domain</h3>
-            <ul class="skill-pills">
-              <li>System Integration</li>
-              <li>Regression</li>
-              <li>Release Testing</li>
-              <li>Scale Testing</li>
-              <li>HLS</li>
-              <li>DASH</li>
-              <li>Smooth Streaming</li>
-              <li>Hadoop Ecosystem</li>
-              <li>Machine Learning Models</li>
-            </ul>
-          </article>
+          {% endfor %}
         </div>
       </div>
     </section>
@@ -170,146 +115,73 @@
         <div class="section-heading">
           <div>
             <div class="section-kicker">Experience</div>
-            <h2>Career timeline.</h2>
+            <h2>Career Snapshot</h2>
           </div>
-          <p>Roles and responsibilities below are adapted directly from the PDF, with light formatting for readability.</p>
         </div>
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-top">
-              <div>
-                <div class="role">Logitech</div>
-                <h3>Lead Software Test Engineer - Automation</h3>
-              </div>
-              <div class="timeline-meta">September 2022 - Present<br>Chennai</div>
-            </div>
-            <ul>
-              <li>Desktop application automation using a Pytest framework with Selenium.</li>
-              <li>Refactoring and optimizing test scripts for better maintainability.</li>
-              <li>Designing suite-based execution with Jenkins and coordinating cross-team automation activities.</li>
-              <li>Documenting processes and system configurations to simplify future updates.</li>
+        <div class="grid-2 experience-grid">
+          <article class="panel narrative-panel">
+            <h3>Selected background</h3>
+            <ul class="detail-list">
+              {% for item in career_context %}
+              <li>{{ item }}</li>
+              {% endfor %}
             </ul>
           </article>
-
-          <article class="timeline-item">
-            <div class="timeline-top">
+          {% for item in experience_highlights %}
+          <article class="panel experience-card">
+            <div class="experience-top">
               <div>
-                <div class="role">MediaKind</div>
-                <h3>Senior Technical Lead - Automation</h3>
+                <div class="role">{{ item["company"] }}</div>
+                <h3>{{ item["role"] }}</h3>
               </div>
-              <div class="timeline-meta">May 2021 - September 2022<br>Remote</div>
+              <div class="timeline-meta">{{ item["period"] }}</div>
             </div>
-            <ul>
-              <li>Built test automation with Pytest and maintained the supporting test infrastructure.</li>
-              <li>Created Jenkins CI pipelines and jobs with declarative pipeline-as-code practices.</li>
-              <li>Automated infrastructure setup with Terraform for sanity environments in GCP and Azure.</li>
+            <ul class="detail-list">
+              {% for detail in item["details"] %}
+              <li>{{ detail }}</li>
+              {% endfor %}
             </ul>
           </article>
-
-          <article class="timeline-item">
-            <div class="timeline-top">
-              <div>
-                <div class="role">Cisco Systems</div>
-                <h3>Software Engineer</h3>
-              </div>
-              <div class="timeline-meta">July 2019 - May 2021<br>Chennai</div>
-            </div>
-            <ul>
-              <li>Brought up all-in-one and multi-node Kubernetes clusters on Cisco UCS ESXi hypervisor environments.</li>
-              <li>Deployed the iNode-Manager application and supported end-to-end environment readiness.</li>
-              <li>Implemented UI automation with Protractor and TypeScript.</li>
-              <li>Built API automation using PyATS and Python.</li>
-              <li>Configured and maintained Jenkins-based automation workflows.</li>
-              <li>Developed Ansible scripts for customer-specific requests and collaborated on release note reviews.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-top">
-              <div>
-                <div class="role">Viasat</div>
-                <h3>Senior Software Engineer</h3>
-              </div>
-              <div class="timeline-meta">March 2019 - July 2019<br>Chennai</div>
-            </div>
-            <ul>
-              <li>Developed Ansible-based test automation for satellite stream-split verification in an Open vSwitch simulated deployment.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-top">
-              <div>
-                <div class="role">Nokia / Velocix</div>
-                <h3>Technical Lead</h3>
-              </div>
-              <div class="timeline-meta">March 2017 - March 2019<br>Chennai</div>
-            </div>
-            <ul>
-              <li>Created test automation using the Python Behave framework.</li>
-              <li>Modified Ansible scripts to support release changes.</li>
-              <li>Built and maintained Jenkins pipelines.</li>
-              <li>Fixed bugs in Python modules on the development codebase.</li>
-            </ul>
-          </article>
-
-          <article class="timeline-item">
-            <div class="timeline-top">
-              <div>
-                <div class="role">HCL Technologies</div>
-                <h3>Lead Engineer</h3>
-              </div>
-              <div class="timeline-meta">May 2011 - March 2017<br>Chennai</div>
-            </div>
-            <ul>
-              <li>Created test plans based on standards, specifications, and requirement documentation.</li>
-              <li>Debugged issues, identified root causes, and partnered with development teams to reproduce and retest fixes.</li>
-              <li>Produced documentation videos for newly implemented release features.</li>
-              <li>Investigated and resolved issues in customer environments.</li>
-              <li>Reviewed and automated test scripts derived from documented test plans.</li>
-            </ul>
-          </article>
+          {% endfor %}
         </div>
       </div>
     </section>
 
-    <section class="section" id="education">
+    <section class="section" id="certifications">
       <div class="wrap">
         <div class="section-heading">
           <div>
-            <div class="section-kicker">Education</div>
-            <h2>Academic background and coursework.</h2>
+            <div class="section-kicker">Certifications</div>
+            <h2>Credentials</h2>
           </div>
-          <p>Education details and additional coursework reproduced from the attached resume.</p>
         </div>
+
+        {% if certifications %}
         <div class="grid-2">
+          {% for cert in certifications %}
           <article class="panel">
-            <h3>Sri Krishna College of Engineering and Technology</h3>
-            <p>B.E in Electronics and Communication</p>
-            <p class="stat-line">Completed April 2011 • Cumulative GPA: 8.52</p>
+            <h3>{{ cert["name"] }}</h3>
+            <p>{{ cert["issuer"] }}</p>
+            {% if cert["meta"] %}
+            <p class="stat-line">{{ cert["meta"] }}</p>
+            {% endif %}
+            {% if cert["url"] %}
+            <a class="text-link" href="{{ cert["url"] }}" target="_blank" rel="noreferrer">View credential</a>
+            {% endif %}
           </article>
-          <article class="panel">
-            <h3>Great Learning</h3>
-            <p>P.G. Diploma in Big Data and Machine Learning</p>
-            <p class="stat-line">Coursework focused on big data systems and machine learning models.</p>
-          </article>
+          {% endfor %}
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="awards">
-      <div class="wrap">
-        <div class="section-heading">
-          <div>
-            <div class="section-kicker">Recognition</div>
-            <h2>Awards</h2>
-          </div>
-          <p>Professional recognition listed in the resume.</p>
-        </div>
-        <article class="panel">
-          <h3>Oinfinity Awards</h3>
-          <p>Received in 2016 at HCL Technologies.</p>
+        {% else %}
+        <article class="panel certification-empty">
+          <h3>Certification data not loaded yet</h3>
+          <p>
+            LinkedIn does not expose certification details reliably enough here to auto-populate
+            this section. If you share the certification names, issuer names, and credential links,
+            they can be rendered directly on this page.
+          </p>
+          <a class="text-link" href="{{ profile.linkedin_url }}" target="_blank" rel="noreferrer">Open LinkedIn profile</a>
         </article>
+        {% endif %}
       </div>
     </section>
   </main>
@@ -317,17 +189,17 @@
   <footer class="footer" id="contact">
     <div class="wrap">
       <div class="footer-card">
-        <div class="section-kicker" style="color: rgba(255, 248, 242, 0.72);">Contact</div>
-        <h2>Let’s build reliable release systems.</h2>
+        <div class="section-kicker footer-kicker">Contact</div>
+        <h2>Available for automation, quality, and delivery-focused roles.</h2>
         <p>
-          If you're hiring for test automation, CI/CD, DevOps enablement, or quality engineering leadership,
-          Pragadeesh is reachable by email, phone, GitHub, and LinkedIn.
+          If the work involves improving engineering confidence through automation and better
+          operational flow, reach out by email or LinkedIn.
         </p>
         <div class="footer-links">
-          <a href="mailto:praga63@gmail.com">praga63@gmail.com</a>
-          <a href="tel:+919585928091">+91 95859 28091</a>
-          <a href="https://github.com/pragadeeshsekar" target="_blank" rel="noreferrer">GitHub</a>
-          <a href="https://www.linkedin.com/in/pragadeeshsekar/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="mailto:{{ profile.email }}">{{ profile.email }}</a>
+          <a href="tel:{{ profile.phone | replace(' ', '') }}">{{ profile.phone }}</a>
+          <a href="{{ profile.github_url }}" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="{{ profile.linkedin_url }}" target="_blank" rel="noreferrer">LinkedIn</a>
         </div>
       </div>
     </div>
