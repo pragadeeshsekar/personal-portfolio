@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta
-    name="description"
-    content="{{ profile.name }} - {{ profile.headline }} portfolio focused on automation systems, delivery reliability, and engineering impact."
-  >
+  <meta name="description"
+    content="{{ profile.name }} - {{ profile.headline }} portfolio focused on automation systems, delivery reliability, and engineering impact.">
   <title>{{ profile.name }} | {{ profile.headline }}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
+
 <body>
   <header class="site-header">
     <div class="wrap nav">
-      <a class="brand" href="#top">{{ profile.name }}</a>
+      <a class="brand" href="#top" aria-label="{{ profile.name }}">{{ profile.name }}</a>
       <nav class="nav-links" aria-label="Section navigation">
         <a href="#about">About</a>
         <a href="#impact">Impact</a>
@@ -28,8 +28,8 @@
     <section class="hero">
       <div class="wrap hero-grid">
         <article class="hero-main">
-          <h1>{{ profile.name }}</h1>
-          <p class="subtitle">{{ profile.headline }}. {{ profile.summary }}</p>
+          <h2>{{ profile.headline }}</h2>
+          <p class="subtitle">{{ profile.summary }}</p>
           <ul class="mini-list" aria-label="Focus areas">
             {% for item in focus_areas %}
             <li>{{ item }}</li>
@@ -166,20 +166,17 @@
             <p class="stat-line">{{ cert["meta"] }}</p>
             {% endif %}
             {% if cert["url"] %}
-            <a class="text-link" href="{{ cert["url"] }}" target="_blank" rel="noreferrer">View credential</a>
+            <a class="text-link" href="{{ cert[" url"] }}" target="_blank" rel="noreferrer">View credential</a>
             {% endif %}
           </article>
           {% endfor %}
         </div>
         {% else %}
         <article class="panel certification-empty">
-          <h3>Certification data not loaded yet</h3>
-          <p>
-            LinkedIn does not expose certification details reliably enough here to auto-populate
-            this section. If you share the certification names, issuer names, and credential links,
-            they can be rendered directly on this page.
-          </p>
-          <a class="text-link" href="{{ profile.linkedin_url }}" target="_blank" rel="noreferrer">Open LinkedIn profile</a>
+          <h3>View certifications on LinkedIn</h3>
+          <p>Open the LinkedIn profile for current certification details and credentials.</p>
+          <a class="text-link" href="{{ profile.linkedin_url }}" target="_blank" rel="noreferrer">Open LinkedIn
+            profile</a>
         </article>
         {% endif %}
       </div>
@@ -205,4 +202,5 @@
     </div>
   </footer>
 </body>
+
 </html>
